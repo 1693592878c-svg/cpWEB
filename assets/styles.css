@@ -168,7 +168,8 @@ a:focus-visible {
 .intro {
   margin: 0 0 24px;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 400;
+  opacity: 0.6;
 }
 
 .hero h1 {
@@ -237,8 +238,8 @@ a:focus-visible {
   max-width: 590px;
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.9;
+  font-size: 13px;
+  line-height: 1.84;
 }
 
 .hero-actions {
@@ -363,11 +364,11 @@ a:focus-visible {
 .photo-frame {
   position: relative;
   z-index: 2;
-  width: min(58%, 270px);
+  width: min(66%, 316px);
   aspect-ratio: 1;
-  padding: 12px;
+  padding: 10px;
   border: 1px solid rgba(255, 255, 255, 0.92);
-  border-radius: 36px;
+  border-radius: 50%;
   background: rgba(255, 255, 255, 0.52);
   box-shadow:
     18px 20px 44px rgba(84, 111, 135, 0.18),
@@ -381,7 +382,8 @@ a:focus-visible {
   height: 100%;
   display: block;
   object-fit: cover;
-  border-radius: 28px;
+  object-position: center 36%;
+  border-radius: 50%;
 }
 
 .portrait-grid {
@@ -398,7 +400,7 @@ a:focus-visible {
 .portrait-panel {
   position: absolute;
   border: 1px solid rgba(255, 255, 255, 0.74);
-  border-radius: 20px;
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.5);
   box-shadow: 14px 14px 34px rgba(84, 111, 135, 0.13), -10px -10px 26px rgba(255, 255, 255, 0.76);
   backdrop-filter: blur(20px) saturate(1.1);
@@ -413,24 +415,53 @@ a:focus-visible {
 
 .portrait-panel strong {
   display: block;
-  margin-top: 8px;
-  font-size: 18px;
+  font-size: 15px;
+  line-height: 1.35;
+  white-space: nowrap;
 }
 
 .panel-main {
-  left: 34px;
-  bottom: 54px;
-  width: 242px;
-  padding: 22px;
+  left: 32px;
+  bottom: 58px;
+  width: 210px;
+  padding: 15px 18px;
   z-index: 3;
+}
+
+.panel-main strong {
+  font-size: 14px;
 }
 
 .panel-side {
   right: 30px;
   top: 42px;
-  width: 210px;
-  padding: 18px;
+  width: 232px;
+  padding: 14px 16px;
   z-index: 3;
+}
+
+.panel-side strong {
+  font-size: 13px;
+}
+
+.panel-extra {
+  padding: 12px 15px;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.44);
+}
+
+.panel-extra strong {
+  font-size: 13px;
+}
+
+.panel-extra-a {
+  left: 36px;
+  top: 72px;
+}
+
+.panel-extra-b {
+  right: 32px;
+  bottom: 56px;
 }
 
 .projects-section,
@@ -561,6 +592,7 @@ a:focus-visible {
 }
 
 .project-image {
+  display: block;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: linear-gradient(135deg, #eef7ff, #f4fff9);
@@ -624,6 +656,27 @@ a:focus-visible {
   background: rgba(247, 250, 255, 0.86);
   font-size: 12px;
   font-weight: 800;
+}
+
+.project-link {
+  width: max-content;
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.project-link::after {
+  content: "→";
+  font-size: 15px;
+  transition: transform 160ms ease;
+}
+
+.project-link:hover::after {
+  transform: translateX(3px);
 }
 
 .about-layout {
@@ -707,15 +760,23 @@ a:focus-visible {
 
 .timeline-item h4 {
   margin: 8px 0 6px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .timeline-item p,
 .strength-card p {
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.75;
+}
+
+.strength-card p {
+  font-size: 14px;
+}
+
+.timeline-item p + p {
+  margin-top: 8px;
 }
 
 .strength-grid {
@@ -902,6 +963,106 @@ a:focus-visible {
   background: #ffffff;
 }
 
+.detail-shell {
+  padding-bottom: 90px;
+}
+
+.detail-hero {
+  margin-top: 48px;
+  padding: 68px clamp(24px, 6vw, 72px);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 24px;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.9), rgba(236, 247, 255, 0.72) 52%, rgba(239, 255, 249, 0.72)),
+    linear-gradient(18deg, transparent 0 56%, rgba(255, 255, 255, 0.58) 56% 70%, transparent 70% 100%);
+  box-shadow: var(--shadow);
+}
+
+.detail-hero h1 {
+  margin: 16px 0 18px;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.02;
+}
+
+.detail-hero p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.back-link {
+  display: inline-flex;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.detail-list {
+  display: grid;
+  gap: 28px;
+  padding-top: 48px;
+}
+
+.detail-case {
+  scroll-margin-top: 96px;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
+  gap: 28px;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.84);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 14px 16px 38px rgba(84, 111, 135, 0.1), -10px -10px 26px rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
+}
+
+.detail-case-image {
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #eef7ff, #f4fff9);
+}
+
+.detail-case-image img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.detail-case-content span {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.detail-case-content h2 {
+  margin: 12px 0 12px;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.2;
+}
+
+.detail-case-content p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.86;
+}
+
+.detail-points {
+  margin-top: 22px;
+  padding: 18px;
+  border: 1px solid rgba(203, 213, 225, 0.62);
+  border-radius: 16px;
+  background: rgba(247, 250, 255, 0.68);
+}
+
+.detail-points strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: 14px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -925,7 +1086,8 @@ a:focus-visible {
 
   .project-grid,
   .about-layout,
-  .contact-wrap {
+  .contact-wrap,
+  .detail-case {
     grid-template-columns: 1fr;
   }
 }
@@ -988,7 +1150,7 @@ a:focus-visible {
   }
 
   .photo-frame {
-    width: min(54%, 220px);
+    width: min(64%, 246px);
   }
 
   .panel-main {
@@ -1002,6 +1164,16 @@ a:focus-visible {
     right: 18px;
     top: 20px;
     width: 180px;
+  }
+
+  .panel-extra-a {
+    left: 18px;
+    top: 108px;
+  }
+
+  .panel-extra-b {
+    right: 18px;
+    bottom: 24px;
   }
 
   .section-heading {
@@ -1018,8 +1190,14 @@ a:focus-visible {
   .timeline-panel,
   .strength-card,
   .tool-panel,
-  .contact-card {
+  .contact-card,
+  .detail-case {
     padding: 20px;
+  }
+
+  .detail-hero {
+    margin-top: 24px;
+    padding: 38px 22px;
   }
 }
 
@@ -1038,6 +1216,10 @@ a:focus-visible {
   }
 
   .panel-side {
+    display: none;
+  }
+
+  .panel-extra {
     display: none;
   }
 }
