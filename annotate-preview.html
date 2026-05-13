@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>网站效果标注板</title>
+  <style>
+    :root {
+      --bg: #101827;
+      --panel: rgba(17, 24, 39, 0.88);
+      --line: rgba(255, 255, 255, 0.14);
+      --text: #f8fafc;
+      --muted: #a9b4c2;
+      --accent: #42c7aa;
+      --red: #ff4d5e;
+      --yellow: #ffc857;
+      --blue: #5a8df7;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .toolbar {
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      top: 14px;
+      z-index: 20;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--panel);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.26);
+      backdrop-filter: blur(18px);
+    }
+
+    .title {
+      min-width: 180px;
+    }
+
+    .title strong {
+      display: block;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .title span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .tool-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    button,
+    label {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 750;
+      cursor: pointer;
+      user-select: none;
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    button:hover,
+    label:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.13);
+    }
+
+    button.active {
+      border-color: rgba(66, 199, 170, 0.82);
+      background: rgba(66, 199, 170, 0.18);
+    }
+
+    button.danger {
+      border-color: rgba(255, 77, 94, 0.32);
+      color: #ffd6dc;
+    }
+
+    button.primary {
+      border-color: rgba(66, 199, 170, 0.6);
+      color: #0c1714;
+      background: var(--accent);
+    }
+
+    input[type="color"] {
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      border: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    input[type="range"] {
+      width: 90px;
+      accent-color: var(--accent);
+    }
+
+    .viewport {
+      position: fixed;
+      inset: 92px 16px 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 18px 58px rgba(0, 0, 0, 0.28);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+      background: #fff;
+    }
+
+    canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    .text-note {
+      position: absolute;
+      z-index: 8;
+      min-width: 160px;
+      max-width: min(320px, calc(100vw - 60px));
+      padding: 10px 12px;
+      border: 2px solid currentColor;
+      border-radius: 10px;
+      color: var(--red);
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+      font-size: 15px;
+      font-weight: 760;
+      line-height: 1.5;
+      outline: none;
+    }
+
+    .hint {
+      position: fixed;
+      left: 26px;
+      bottom: 26px;
+      z-index: 18;
+      max-width: 460px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 10px;
+      color: rgba(255, 255, 255, 0.72);
+      background: rgba(15, 23, 42, 0.72);
+      font-size: 12px;
+      line-height: 1.6;
+      backdrop-filter: blur(12px);
+    }
+
+    @media (max-width: 900px) {
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .title {
+        min-width: 0;
+      }
+
+      .viewport {
+        inset-top: 166px;
+      }
+
+      .hint {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="toolbar">
+    <div class="title">
+      <strong>网站效果标注板</strong>
+      <span>在页面上画圈、写文字，导出图片后发给我修改</span>
+    </div>
+
+    <div class="tool-group" aria-label="标注工具">
+      <button class="active" type="button" data-tool="pen">画笔</button>
+      <button type="button" data-tool="arrow">箭头</button>
+      <button type="button" data-tool="rect">矩形</button>
+      <button type="button" data-tool="text">文字</button>
+      <input id="color" type="color" value="#ff4d5e" title="标注颜色" />
+      <label for="size">粗细 <input id="size" type="range" min="2" max="14" value="5" /></label>
+    </div>
+
+    <div class="tool-group" aria-label="操作">
+      <button type="button" id="undo">撤销</button>
+      <button class="danger" type="button" id="clear">清空标注</button>
+      <button class="primary" type="button" id="export">导出标注图</button>
+    </div>
+  </header>
+
+  <main class="viewport" id="viewport">
+    <iframe id="site" src="./index.html?preview=20260512-hero-projects" title="当前个人网站预览"></iframe>
+    <canvas id="canvas" aria-label="标注画布"></canvas>
+  </main>
+
+  <div class="hint">
+    提示：选择“文字”后点击页面即可输入备注；画错了点“撤销”。导出的图片会包含你画的标注，网站本身如果因为浏览器限制没有合成进去，也可以直接截图这个页面发给我。
+  </div>
+
+  <script>
+    const viewport = document.querySelector("#viewport");
+    const canvas = document.querySelector("#canvas");
+    const ctx = canvas.getContext("2d");
+    const colorInput = document.querySelector("#color");
+    const sizeInput = document.querySelector("#size");
+    const toolButtons = [...document.querySelectorAll("[data-tool]")];
+    const undoButton = document.querySelector("#undo");
+    const clearButton = document.querySelector("#clear");
+    const exportButton = document.querySelector("#export");
+
+    let tool = "pen";
+    let drawing = false;
+    let start = null;
+    let points = [];
+    let history = [];
+    let snapshot = null;
+
+    function resizeCanvas() {
+      const rect = viewport.getBoundingClientRect();
+      const ratio = window.devicePixelRatio || 1;
+      const old = canvas.toDataURL();
+      canvas.width = Math.round(rect.width * ratio);
+      canvas.height = Math.round(rect.height * ratio);
+      canvas.style.width = rect.width + "px";
+      canvas.style.height = rect.height + "px";
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      const img = new Image();
+      img.onload = () => ctx.drawImage(img, 0, 0, rect.width, rect.height);
+      img.src = old;
+    }
+
+    function getPoint(event) {
+      const rect = canvas.getBoundingClientRect();
+      const source = event.touches ? event.touches[0] : event;
+      return {
+        x: source.clientX - rect.left,
+        y: source.clientY - rect.top
+      };
+    }
+
+    function saveHistory() {
+      history.push(canvas.toDataURL());
+      if (history.length > 40) history.shift();
+    }
+
+    function restore(dataUrl) {
+      const rect = canvas.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      if (!dataUrl) return;
+      const img = new Image();
+      img.onload = () => ctx.drawImage(img, 0, 0, rect.width, rect.height);
+      img.src = dataUrl;
+    }
+
+    function setStyle() {
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = colorInput.value;
+      ctx.fillStyle = colorInput.value;
+      ctx.lineWidth = Number(sizeInput.value);
+    }
+
+    function drawLine(from, to) {
+      ctx.beginPath();
+      ctx.moveTo(from.x, from.y);
+      ctx.lineTo(to.x, to.y);
+      ctx.stroke();
+    }
+
+    function drawRect(from, to) {
+      ctx.strokeRect(from.x, from.y, to.x - from.x, to.y - from.y);
+    }
+
+    function drawArrow(from, to) {
+      const angle = Math.atan2(to.y - from.y, to.x - from.x);
+      const head = 18 + Number(sizeInput.value);
+      drawLine(from, to);
+      ctx.beginPath();
+      ctx.moveTo(to.x, to.y);
+      ctx.lineTo(to.x - head * Math.cos(angle - Math.PI / 6), to.y - head * Math.sin(angle - Math.PI / 6));
+      ctx.moveTo(to.x, to.y);
+      ctx.lineTo(to.x - head * Math.cos(angle + Math.PI / 6), to.y - head * Math.sin(angle + Math.PI / 6));
+      ctx.stroke();
+    }
+
+    function addTextNote(point) {
+      saveHistory();
+      const note = document.createElement("div");
+      note.className = "text-note";
+      note.contentEditable = "true";
+      note.textContent = "修改这里";
+      note.style.left = point.x + "px";
+      note.style.top = point.y + "px";
+      note.style.color = colorInput.value;
+      viewport.appendChild(note);
+      note.focus();
+      document.execCommand("selectAll", false, null);
+    }
+
+    function flattenTextNotes() {
+      const rect = viewport.getBoundingClientRect();
+      const notes = [...document.querySelectorAll(".text-note")];
+      setStyle();
+      notes.forEach((note) => {
+        const box = note.getBoundingClientRect();
+        const x = box.left - rect.left;
+        const y = box.top - rect.top;
+        const width = box.width;
+        const height = box.height;
+        ctx.save();
+        ctx.strokeStyle = note.style.color || colorInput.value;
+        ctx.fillStyle = "rgba(255, 255, 255, 0.94)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.roundRect(x, y, width, height, 10);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = note.style.color || colorInput.value;
+        ctx.font = "760 15px system-ui, -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif";
+        const text = note.textContent.trim() || "修改这里";
+        const lines = text.match(/.{1,16}/g) || [text];
+        lines.forEach((line, index) => ctx.fillText(line, x + 12, y + 24 + index * 22));
+        ctx.restore();
+      });
+    }
+
+    toolButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        tool = button.dataset.tool;
+        toolButtons.forEach((item) => item.classList.toggle("active", item === button));
+        canvas.style.pointerEvents = "auto";
+      });
+    });
+
+    canvas.addEventListener("pointerdown", (event) => {
+      const point = getPoint(event);
+      if (tool === "text") {
+        addTextNote(point);
+        return;
+      }
+      drawing = true;
+      start = point;
+      points = [point];
+      saveHistory();
+      snapshot = canvas.toDataURL();
+      setStyle();
+    });
+
+    canvas.addEventListener("pointermove", (event) => {
+      if (!drawing) return;
+      const point = getPoint(event);
+      setStyle();
+      if (tool === "pen") {
+        const previous = points[points.length - 1];
+        drawLine(previous, point);
+        points.push(point);
+        return;
+      }
+      restore(snapshot);
+      if (tool === "rect") drawRect(start, point);
+      if (tool === "arrow") drawArrow(start, point);
+    });
+
+    canvas.addEventListener("pointerup", () => {
+      drawing = false;
+      snapshot = null;
+    });
+
+    canvas.addEventListener("pointerleave", () => {
+      drawing = false;
+      snapshot = null;
+    });
+
+    undoButton.addEventListener("click", () => {
+      const last = history.pop();
+      restore(last || null);
+      const note = document.querySelector(".text-note:last-of-type");
+      if (note) note.remove();
+    });
+
+    clearButton.addEventListener("click", () => {
+      saveHistory();
+      const rect = canvas.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      document.querySelectorAll(".text-note").forEach((note) => note.remove());
+    });
+
+    exportButton.addEventListener("click", () => {
+      flattenTextNotes();
+      document.querySelectorAll(".text-note").forEach((note) => note.remove());
+      const link = document.createElement("a");
+      link.download = "website-annotation.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+  </script>
+</body>
+</html>

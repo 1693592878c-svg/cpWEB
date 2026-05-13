@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">硬件界面设计封面</title>
+  <desc id="desc">智能终端和触摸屏界面示意图</desc>
+  <rect width="960" height="600" fill="#f8fafc"/>
+  <rect x="146" y="104" width="668" height="392" rx="34" fill="#1f2937"/>
+  <rect x="188" y="146" width="584" height="308" rx="16" fill="#ffffff"/>
+  <rect x="224" y="186" width="202" height="124" rx="14" fill="#f1f5f9" stroke="#dbe3eb"/>
+  <rect x="454" y="186" width="282" height="124" rx="14" fill="#f1f5f9" stroke="#dbe3eb"/>
+  <rect x="224" y="344" width="512" height="70" rx="14" fill="#f8fbfd" stroke="#dbe3eb"/>
+  <g fill="#64748b">
+    <rect x="256" y="224" width="108" height="12" rx="6"/><rect x="256" y="256" width="132" height="10" rx="5" opacity=".36"/>
+    <rect x="486" y="224" width="180" height="12" rx="6"/><rect x="486" y="256" width="208" height="10" rx="5" opacity=".36"/>
+    <circle cx="260" cy="379" r="14"/><rect x="292" y="372" width="360" height="14" rx="7" opacity=".3"/>
+  </g>
+  <circle cx="480" cy="478" r="10" fill="#94a3b8"/>
+</svg>

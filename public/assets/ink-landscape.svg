@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="wash" x1="0" x2="0" y1="0" y2="1">
+      <stop stop-color="#f7faf8" stop-opacity="0"/>
+      <stop offset="0.52" stop-color="#dbe7e2" stop-opacity=".52"/>
+      <stop offset="1" stop-color="#eef3f0" stop-opacity=".82"/>
+    </linearGradient>
+    <linearGradient id="ink" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#8fa6a1" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#536b69" stop-opacity=".09"/>
+    </linearGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#wash)"/>
+  <path d="M0 560c132-84 208-126 330-78 92 36 139 30 226-41 119-98 228-120 348-42 88 57 155 52 260-19 130-88 256-71 436 55v465H0z" fill="url(#ink)" filter="url(#soft)"/>
+  <path d="M0 666c172-80 283-113 404-54 91 44 164 29 250-45 108-93 201-85 312-17 106 65 206 62 324-18 116-78 215-48 310 18v350H0z" fill="#819792" opacity=".13"/>
+  <path d="M0 728c136-46 250-54 362-18 156 50 279 45 404-24 138-76 255-71 396-12 146 62 268 56 438-18v244H0z" fill="#ffffff" opacity=".38"/>
+</svg>

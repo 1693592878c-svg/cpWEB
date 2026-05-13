@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">门户网站设计封面</title>
+  <desc id="desc">政府与行业门户网站界面示意图</desc>
+  <rect width="960" height="600" fill="#f7fdff"/>
+  <rect x="96" y="78" width="768" height="444" rx="18" fill="#fff" stroke="#d9edf5"/>
+  <rect x="96" y="78" width="768" height="72" rx="18" fill="#effaff"/>
+  <g fill="#0f172a">
+    <rect x="138" y="108" width="126" height="16" rx="8"/><rect x="574" y="112" width="58" height="10" rx="5" opacity=".32"/><rect x="660" y="112" width="58" height="10" rx="5" opacity=".32"/><rect x="746" y="112" width="58" height="10" rx="5" opacity=".32"/>
+  </g>
+  <rect x="138" y="196" width="300" height="54" rx="8" fill="#06b6d4" opacity=".88"/>
+  <rect x="138" y="278" width="300" height="12" rx="6" fill="#0f172a" opacity=".22"/>
+  <rect x="138" y="314" width="248" height="12" rx="6" fill="#0f172a" opacity=".16"/>
+  <rect x="504" y="196" width="300" height="204" rx="16" fill="#ecfeff" stroke="#bae6fd"/>
+  <path d="M540 360h228M540 322h182M540 284h228" stroke="#06b6d4" stroke-width="8" stroke-linecap="round"/>
+</svg>

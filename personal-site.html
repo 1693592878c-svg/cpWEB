@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>陈萍 - UI/UX 设计师个人网站</title>
+  <meta name="description" content="陈萍 UI/UX 设计师个人网站，展示可视化大屏、B端系统、移动端、门户网站、AI设计与硬件界面项目经验。" />
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f8fb;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --muted: #677282;
+      --soft: #edf5f8;
+      --line: rgba(148, 163, 184, 0.24);
+      --blue: #4f83f1;
+      --cyan: #31b89d;
+      --warm: #f97366;
+      --shadow: 0 22px 58px rgba(61, 88, 112, 0.14);
+      --max: 1180px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background:
+        linear-gradient(125deg, rgba(232, 244, 255, 0.96), rgba(239, 255, 248, 0.74) 46%, rgba(250, 244, 255, 0.72)),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      background-attachment: fixed;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      background-image:
+        linear-gradient(rgba(79, 131, 241, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(49, 184, 157, 0.06) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(180deg, #000 0 56%, transparent 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0 12px;
+      background: rgba(255, 255, 255, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(20px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 850;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #fff;
+      background: linear-gradient(145deg, var(--cyan), var(--blue));
+      box-shadow: 0 14px 30px rgba(79, 131, 241, 0.22);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      color: #243044;
+      font-size: 15px;
+      font-weight: 760;
+    }
+
+    .nav a {
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav a::after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      content: "";
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      margin-top: 28px;
+      min-height: 680px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1.05fr);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: center;
+      padding: clamp(42px, 7vw, 84px);
+      border: 1px solid rgba(255, 255, 255, 0.86);
+      border-radius: 28px;
+      background:
+        linear-gradient(115deg, rgba(255, 255, 255, 0.94), rgba(239, 248, 255, 0.7) 55%, rgba(239, 255, 250, 0.72)),
+        linear-gradient(20deg, transparent 0 58%, rgba(255, 255, 255, 0.62) 58% 72%, transparent 72% 100%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .intro {
+      margin: 0 0 20px;
+      color: #354458;
+      font-size: 19px;
+      font-weight: 820;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "STKaiti", "Kaiti SC", "Songti SC", "Noto Serif CJK SC", serif;
+      font-size: clamp(58px, 8.2vw, 116px);
+      line-height: 0.9;
+      letter-spacing: 0;
+      color: transparent;
+      background: linear-gradient(135deg, #17211f 5%, #315c55 48%, #527ff0 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 10px 12px 0 rgba(79, 131, 241, 0.08);
+    }
+
+    .role {
+      margin: 24px 0 18px;
+      color: #202b3b;
+      font-size: 23px;
+      font-weight: 850;
+    }
+
+    .lead {
+      max-width: 610px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.95;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 34px;
+    }
+
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 820;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      color: #fff;
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: 0 16px 34px rgba(79, 131, 241, 0.22);
+    }
+
+    .btn.ghost {
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: inset 4px 4px 12px rgba(88, 112, 136, 0.08), inset -4px -4px 12px rgba(255, 255, 255, 0.9);
+    }
+
+    .stats {
+      max-width: 470px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .stat {
+      padding: 16px 0 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .portrait {
+      position: relative;
+      width: min(100%, 520px);
+      min-height: 480px;
+      margin-left: auto;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.84);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(105, 139, 255, 0.27), transparent 22%),
+        radial-gradient(circle at 18% 82%, rgba(49, 184, 157, 0.22), transparent 24%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(234, 246, 255, 0.76));
+      box-shadow: 20px 24px 54px rgba(61, 88, 112, 0.17);
+      overflow: hidden;
+    }
+
+    .portrait::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background-image:
+        linear-gradient(rgba(79, 131, 241, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(49, 184, 157, 0.08) 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: linear-gradient(135deg, transparent 5%, #000 35%, #000 78%, transparent 100%);
+    }
+
+    .photo-frame {
+      position: relative;
+      z-index: 1;
+      width: min(58%, 280px);
+      aspect-ratio: 1;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.92);
+      border-radius: 36px;
+      background: rgba(255, 255, 255, 0.58);
+      box-shadow: 18px 22px 48px rgba(61, 88, 112, 0.18);
+      backdrop-filter: blur(18px);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 28px;
+    }
+
+    .floating-note {
+      position: absolute;
+      z-index: 2;
+      max-width: 250px;
+      padding: 18px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.62);
+      box-shadow: 0 16px 42px rgba(61, 88, 112, 0.14);
+      backdrop-filter: blur(18px);
+    }
+
+    .floating-note span {
+      display: block;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .floating-note strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .note-a {
+      left: 32px;
+      bottom: 46px;
+    }
+
+    .note-b {
+      right: 28px;
+      top: 38px;
+    }
+
+    section {
+      scroll-margin-top: 90px;
+    }
+
+    .section {
+      padding: 104px 0 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 56px minmax(0, 760px);
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 34px;
+    }
+
+    .section-icon {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      color: #fff;
+      background: linear-gradient(145deg, var(--cyan), var(--blue));
+      box-shadow: 0 16px 34px rgba(79, 131, 241, 0.2);
+      font-weight: 900;
+    }
+
+    .section-head h2,
+    .contact h2 {
+      margin: 0;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .section-head p,
+    .contact p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.86);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 16px 38px rgba(61, 88, 112, 0.1);
+      backdrop-filter: blur(14px);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 24px 58px rgba(61, 88, 112, 0.16);
+    }
+
+    .project-image {
+      margin: 12px 12px 0;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border-radius: 14px;
+      background: var(--soft);
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 360ms ease;
+    }
+
+    .card:hover .project-image img {
+      transform: scale(1.045);
+    }
+
+    .card-body {
+      flex: 1;
+      padding: 20px 22px 24px;
+    }
+
+    .category {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .card h3 {
+      margin: 12px 0 10px;
+      font-size: 21px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.82;
+    }
+
+    .tags,
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tags span,
+    .tools span {
+      padding: 7px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 8px;
+      color: #4a5568;
+      background: rgba(255, 255, 255, 0.62);
+      font-size: 12px;
+      font-weight: 780;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 22px;
+    }
+
+    .panel {
+      border: 1px solid rgba(255, 255, 255, 0.86);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 16px 38px rgba(61, 88, 112, 0.1);
+      backdrop-filter: blur(14px);
+    }
+
+    .timeline {
+      padding: 26px;
+    }
+
+    .timeline h3,
+    .tool-panel h3 {
+      margin: 0 0 20px;
+      font-size: 22px;
+    }
+
+    .time-item {
+      position: relative;
+      padding: 0 0 24px 24px;
+      border-left: 1px solid rgba(79, 131, 241, 0.22);
+    }
+
+    .time-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .time-item::before {
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      content: "";
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: 0 0 0 6px rgba(79, 131, 241, 0.1);
+    }
+
+    .time-item span {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .time-item h4 {
+      margin: 7px 0 6px;
+      font-size: 17px;
+    }
+
+    .time-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .strengths {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .strength {
+      padding: 24px;
+    }
+
+    .strength h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .strength p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.82;
+    }
+
+    .tool-panel {
+      margin-top: 22px;
+      padding: 26px;
+    }
+
+    .tools {
+      margin-top: 0;
+    }
+
+    .tools span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .tools i {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      color: #fff;
+      background: var(--tool);
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .contact {
+      margin-top: 104px;
+      padding: 56px 0;
+      background: linear-gradient(135deg, rgba(34, 45, 62, 0.96), rgba(37, 68, 84, 0.94));
+      color: #fff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .contact p {
+      color: rgba(255, 255, 255, 0.74);
+      max-width: 620px;
+    }
+
+    .contact-card {
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 46px rgba(0, 0, 0, 0.18);
+    }
+
+    .contact-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      font-weight: 820;
+    }
+
+    .contact-line span {
+      color: rgba(255, 255, 255, 0.58);
+      font-weight: 700;
+    }
+
+    .file-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .file-actions a {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      color: #17211f;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .footer {
+      padding: 20px 0 32px;
+      color: rgba(255, 255, 255, 0.58);
+      background: #243044;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .about,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait {
+        margin: 0;
+      }
+
+      .projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .site-header {
+        align-items: flex-start;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 34px 22px;
+        border-radius: 22px;
+      }
+
+      .lead {
+        font-size: 14.5px;
+      }
+
+      .stats,
+      .projects,
+      .strengths,
+      .file-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait {
+        min-height: 390px;
+      }
+
+      .photo-frame {
+        width: min(64%, 240px);
+      }
+
+      .floating-note {
+        max-width: 220px;
+        padding: 14px 16px;
+      }
+
+      .note-a {
+        left: 18px;
+        bottom: 24px;
+      }
+
+      .note-b {
+        right: 16px;
+        top: 22px;
+      }
+
+      .floating-note strong {
+        font-size: 15px;
+      }
+
+      .section {
+        padding-top: 72px;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .contact {
+        margin-top: 72px;
+      }
+
+      .contact-line {
+        display: block;
+      }
+
+      .contact-line span {
+        display: block;
+        margin-bottom: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header wrap">
+    <a class="brand" href="#home" aria-label="回到首页">
+      <span class="brand-mark">CP</span>
+      <span>陈萍作品集</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#home">首页</a>
+      <a href="#projects">案例作品</a>
+      <a href="#about">关于我</a>
+      <a href="#contact">联系</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="home">
+      <div>
+        <p class="intro">你好，我是</p>
+        <h1>陈萍</h1>
+        <p class="role">UI/UX 设计师</p>
+        <p class="lead">
+          10年+设计经验，聚焦可视化大屏、B端系统、移动端、网站门户与硬件界面。擅长复杂业务信息架构、设计系统搭建、组件库沉淀与高保真落地，也持续融合 AI 生图、动效和多媒体表达，帮助项目更快被看懂、被认可、被上线。
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">查看项目案例</a>
+          <a class="btn ghost" href="mailto:1693592878@qq.com">联系我</a>
+        </div>
+        <div class="stats" aria-label="核心数据">
+          <div class="stat"><strong>10+</strong><span>设计经验/年</span></div>
+          <div class="stat"><strong>30+</strong><span>项目经验</span></div>
+          <div class="stat"><strong>6</strong><span>多端场景</span></div>
+        </div>
+      </div>
+      <div class="portrait" aria-label="个人视觉区域">
+        <div class="photo-frame">
+          <img src="./assets/profile-photo.png" alt="陈萍个人照片" />
+        </div>
+        <div class="floating-note note-a">
+          <span>UI/UX Designer</span>
+          <strong>全链路、可视化、AI 辅助设计</strong>
+        </div>
+        <div class="floating-note note-b">
+          <span>Design Ops</span>
+          <strong>组件库 / 规范 / 走查</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="projects">
+      <div class="section-head">
+        <span class="section-icon">01</span>
+        <div>
+          <h2>项目案例</h2>
+          <p>从复杂业务到多端体验，优先展示能体现结构能力、视觉落地和客户协同的代表项目。</p>
+        </div>
+      </div>
+      <div class="projects">
+        <article class="card" style="--accent:#0ea5e9">
+          <div class="project-image"><img src="./assets/project-thumb-1.jpg" alt="某流域智慧水利数字孪生平台项目封面" /></div>
+          <div class="card-body">
+            <span class="category">可视化大屏</span>
+            <h3>某流域智慧水利数字孪生平台</h3>
+            <p>整合流域总览、水库矩阵、防洪调度与兴利调度，完成复杂水利业务的数据分层、驾驶舱视觉体系与多端体验统一。</p>
+            <div class="tags"><span>数字孪生</span><span>GIS</span><span>监测预警</span><span>多端协同</span></div>
+          </div>
+        </article>
+        <article class="card" style="--accent:#14b8a6">
+          <div class="project-image"><img src="./assets/project-thumb-2.jpg" alt="国家级公园综合管理平台项目封面" /></div>
+          <div class="card-body">
+            <span class="category">可视化大屏</span>
+            <h3>国家级公园综合管理平台</h3>
+            <p>面向生态保护、灾害防控、设备运维与应急指挥，主导核心板块从 0 到 1 的信息架构、视觉风格与交互落地。</p>
+            <div class="tags"><span>应急指挥</span><span>设备管理</span><span>生态监测</span><span>宣传视频</span></div>
+          </div>
+        </article>
+        <article class="card" style="--accent:#2563eb">
+          <div class="project-image"><img src="./assets/project-thumb-3.jpg" alt="B端流域综合管理平台项目封面" /></div>
+          <div class="card-body">
+            <span class="category">B端/后台系统</span>
+            <h3>B端流域综合管理平台</h3>
+            <p>服务政府管理者、运维人员与巡查员，建立统一规范与模块化设计逻辑，提升页面复用和跨平台交付效率。</p>
+            <div class="tags"><span>B端系统</span><span>组件库</span><span>软硬一体</span><span>设计规范</span></div>
+          </div>
+        </article>
+        <article class="card" style="--accent:#8b5cf6">
+          <div class="project-image"><img src="./assets/project-thumb-4.jpg" alt="某教育局一体化数字应用项目封面" /></div>
+          <div class="card-body">
+            <span class="category">移动端/小程序</span>
+            <h3>某教育局一体化数字应用</h3>
+            <p>构建驾驶舱、移动端与 PC 端的多端差异化体验，覆盖街道、社区与家庭场景，支持政务应用高效上线。</p>
+            <div class="tags"><span>政务应用</span><span>多端体验</span><span>小程序</span><span>AE动效</span></div>
+          </div>
+        </article>
+        <article class="card" style="--accent:#f97316">
+          <div class="project-image"><img src="./assets/project-thumb-5.jpg" alt="浙江某司法矫正驾驶舱项目封面" /></div>
+          <div class="card-body">
+            <span class="category">可视化大屏</span>
+            <h3>浙江某司法矫正驾驶舱</h3>
+            <p>围绕行知去向、动知轨迹、违规警示目标，梳理监管业务链路，输出权威、清晰、可展示的数据驾驶舱。</p>
+            <div class="tags"><span>智慧司法</span><span>短周期交付</span><span>动效落地</span><span>客户汇报</span></div>
+          </div>
+        </article>
+        <article class="card" style="--accent:#06b6d4">
+          <div class="project-image"><img src="./assets/project-thumb-6.jpg" alt="政府与行业门户网站设计项目封面" /></div>
+          <div class="card-body">
+            <span class="category">网站/门户</span>
+            <h3>政府与行业门户网站设计</h3>
+            <p>参与政府官网、农业科院、政协、司法等多类门户界面设计，兼顾公开信息传达、视觉规范与上线可用性。</p>
+            <div class="tags"><span>官网设计</span><span>信息架构</span><span>政务形象</span><span>上线交付</span></div>
+          </div>
+        </article>
+        <article class="card" style="--accent:#10b981">
+          <div class="project-image"><img src="./assets/project-thumb-7.jpg" alt="AI设计、动效与品牌物料支持项目封面" /></div>
+          <div class="card-body">
+            <span class="category">AI设计/动效/品牌物料</span>
+            <h3>AI设计、动效与品牌物料支持</h3>
+            <p>融合 AI 生图、AE 动效、宣传视频、画册与 PPT 表达，支撑项目提案、对外传播与复杂方案可视化呈现。</p>
+            <div class="tags"><span>AI生图</span><span>AE</span><span>PPT</span><span>宣传视频</span></div>
+          </div>
+        </article>
+        <article class="card" style="--accent:#64748b">
+          <div class="project-image"><img src="./assets/project-thumb-8.jpg" alt="智能终端与闸控触摸屏界面项目封面" /></div>
+          <div class="card-body">
+            <span class="category">硬件界面</span>
+            <h3>智能终端与闸控触摸屏界面</h3>
+            <p>负责智能遥感终端机、闸控触摸屏等硬件界面设计，关注现场操作效率、信息层级与软硬件体验一致性。</p>
+            <div class="tags"><span>硬件UI</span><span>触摸屏</span><span>现场操作</span><span>一致性</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="about">
+      <div class="section-head">
+        <span class="section-icon">02</span>
+        <div>
+          <h2>关于我</h2>
+          <p>从平面到 UI/UX，从单点页面到多端产品体系，我更关注设计如何帮助复杂项目稳定落地。</p>
+        </div>
+      </div>
+      <div class="about">
+        <div class="panel timeline">
+          <h3>经历概览</h3>
+          <div class="time-item">
+            <span>2023 - 2025</span>
+            <h4>上海米度测控科技有限公司</h4>
+            <p>水利、林业、数字孪生、大屏、B端、移动端与硬件界面设计。</p>
+          </div>
+          <div class="time-item">
+            <span>2021 - 2023</span>
+            <h4>浙江数擎科技有限公司</h4>
+            <p>智慧乡村、政务官网、司法、教育与数字化大屏项目。</p>
+          </div>
+          <div class="time-item">
+            <span>2015 - 2021</span>
+            <h4>UI 与平面设计积累</h4>
+            <p>小程序、官网、宣传物料、客户沟通与项目落地执行。</p>
+          </div>
+        </div>
+        <div class="strengths">
+          <article class="panel strength">
+            <h3>复杂业务可视化</h3>
+            <p>长期服务水利、林业、司法、教育、乡村治理等复杂业务，将专业数据转化为清晰可读的驾驶舱与管理界面。</p>
+          </article>
+          <article class="panel strength">
+            <h3>全链路 UI/UX</h3>
+            <p>覆盖需求评审、信息架构、交互设计、高保真视觉、标注走查、开发协同与上线验收。</p>
+          </article>
+          <article class="panel strength">
+            <h3>设计系统与组件库</h3>
+            <p>可独立搭建大屏、B端与多端规范，沉淀颜色、布局、图表、组件与复用规则，提高团队交付效率。</p>
+          </article>
+          <article class="panel strength">
+            <h3>AI 与多媒体表达</h3>
+            <p>融合 AI 生图、手绘、AE 动效、宣传视频、PPT 与品牌物料能力，让方案更容易被客户理解和采纳。</p>
+          </article>
+        </div>
+      </div>
+      <div class="panel tool-panel">
+        <h3>擅长工具与方法</h3>
+        <div class="tools">
+          <span><i style="--tool:#a259ff">Fi</i>Figma</span>
+          <span><i style="--tool:#f7b500">Sk</i>Sketch</span>
+          <span><i style="--tool:#31a8ff">Ps</i>Photoshop</span>
+          <span><i style="--tool:#ff9a00">Ai</i>Illustrator</span>
+          <span><i style="--tool:#9999ff">Ae</i>After Effects</span>
+          <span><i style="--tool:#0ea5e9">Ax</i>Axure</span>
+          <span><i style="--tool:#14b8a6">AI</i>AI 生图</span>
+          <span><i style="--tool:#f97316">PT</i>PPT</span>
+          <span><i style="--tool:#64748b">UI</i>组件库</span>
+          <span><i style="--tool:#0f766e">DS</i>设计规范</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <h2>招聘沟通 / 设计合作</h2>
+          <p>适合 UI/UX、可视化大屏、B端产品、多端设计规范、项目提案视觉与 AI 辅助设计相关机会。</p>
+        </div>
+        <div class="contact-card">
+          <a class="contact-line" href="tel:18900585079"><span>电话</span>18900585079</a>
+          <a class="contact-line" href="mailto:1693592878@qq.com"><span>邮箱</span>1693592878@qq.com</a>
+          <div class="file-actions">
+            <a href="./files/uiux-resume.pdf" target="_blank" rel="noreferrer">查看简历 PDF</a>
+            <a href="./files/portfolio.pdf" target="_blank" rel="noreferrer">查看作品集 PDF</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2026 陈萍 UI/UX 设计师个人网站</footer>
+</body>
+</html>
