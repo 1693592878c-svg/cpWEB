@@ -82,8 +82,18 @@
             </div>
           </div>
 
+          <div class="project-filter" aria-label="项目分类筛选">
+            <button class="filter-button is-active" type="button" data-filter="全部" aria-pressed="true">全部</button>
+            <button class="filter-button" type="button" data-filter="可视化大屏" aria-pressed="false">可视化大屏</button>
+            <button class="filter-button" type="button" data-filter="移动端" aria-pressed="false">移动端</button>
+            <button class="filter-button" type="button" data-filter="后台系统" aria-pressed="false">后台系统</button>
+            <button class="filter-button" type="button" data-filter="网站/门户" aria-pressed="false">网站/门户</button>
+            <button class="filter-button" type="button" data-filter="硬件设计" aria-pressed="false">硬件设计</button>
+            <button class="filter-button" type="button" data-filter="AI动效/品牌物料" aria-pressed="false">AI动效/品牌物料</button>
+          </div>
+
           <div class="project-grid">
-            <article class="project-card" data-category="可视化大屏" style="--accent: #0ea5e9">
+            <article class="project-card" data-category="可视化大屏" data-href="./project-detail.html#digital-twin-water" tabindex="0" role="link" aria-label="查看某流域智慧水利数字孪生平台详情" style="--accent: #0ea5e9">
               <a class="project-image" href="./project-detail.html#digital-twin-water" aria-label="查看某流域智慧水利数字孪生平台详情">
                 <img src="./assets/project-thumb-1.jpg" alt="某流域智慧水利数字孪生平台项目封面" loading="lazy" />
               </a>
@@ -96,46 +106,7 @@
               </div>
             </article>
 
-            <article class="project-card" data-category="可视化大屏" style="--accent: #0ea5e9">
-              <a class="project-image" href="./project-detail.html#national-park" aria-label="查看国家级公园综合管理平台详情">
-                <img src="./assets/project-thumb-2.jpg" alt="国家级公园综合管理平台项目封面" loading="lazy" />
-              </a>
-              <div class="project-content">
-                <span class="project-category">可视化大屏</span>
-                <h3>国家级公园综合管理平台</h3>
-                <p>面向生态保护、灾害防控、设备运维与应急指挥，主导核心板块从 0 到 1 的信息架构、视觉风格与交互落地。</p>
-                <div class="tag-list"><span>应急指挥</span><span>设备管理</span><span>生态监测</span><span>宣传视频</span></div>
-                <a class="project-link" href="./project-detail.html#national-park">查看详情</a>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="可视化大屏" style="--accent: #0ea5e9">
-              <a class="project-image" href="./project-detail.html#justice-dashboard" aria-label="查看浙江某司法矫正驾驶舱详情">
-                <img src="./assets/project-thumb-5.jpg" alt="浙江某司法矫正驾驶舱项目封面" loading="lazy" />
-              </a>
-              <div class="project-content">
-                <span class="project-category">可视化大屏</span>
-                <h3>浙江某司法矫正驾驶舱</h3>
-                <p>围绕“行知去向、动知轨迹、违规警示”目标，梳理监管业务链路，输出权威、清晰、可展示的数据驾驶舱。</p>
-                <div class="tag-list"><span>智慧司法</span><span>短周期交付</span><span>动效落地</span><span>客户汇报</span></div>
-                <a class="project-link" href="./project-detail.html#justice-dashboard">查看详情</a>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="后台系统" style="--accent: #2563eb">
-              <a class="project-image" href="./project-detail.html#basin-platform" aria-label="查看B端流域综合管理平台详情">
-                <img src="./assets/project-thumb-3.jpg" alt="B端流域综合管理平台项目封面" loading="lazy" />
-              </a>
-              <div class="project-content">
-                <span class="project-category">后台系统</span>
-                <h3>B端流域综合管理平台</h3>
-                <p>服务政府管理者、运维人员与巡查员，建立统一规范与模块化设计逻辑，提升页面复用和跨平台交付效率。</p>
-                <div class="tag-list"><span>B端系统</span><span>组件库</span><span>软硬一体</span><span>设计规范</span></div>
-                <a class="project-link" href="./project-detail.html#basin-platform">查看详情</a>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="移动端" style="--accent: #8b5cf6">
+            <article class="project-card" data-category="移动端" data-href="./project-detail.html#education-app" tabindex="0" role="link" aria-label="查看某教育局一体化数字应用详情" style="--accent: #8b5cf6">
               <a class="project-image" href="./project-detail.html#education-app" aria-label="查看某教育局一体化数字应用详情">
                 <img src="./assets/project-thumb-4.jpg" alt="某教育局一体化数字应用项目封面" loading="lazy" />
               </a>
@@ -148,33 +119,7 @@
               </div>
             </article>
 
-            <article class="project-card" data-category="网站/门户" style="--accent: #06b6d4">
-              <a class="project-image" href="./project-detail.html#government-web" aria-label="查看政府与行业门户网站设计详情">
-                <img src="./assets/project-thumb-6.jpg" alt="政府与行业门户网站设计项目封面" loading="lazy" />
-              </a>
-              <div class="project-content">
-                <span class="project-category">网站/门户</span>
-                <h3>政府行业专题门户设计</h3>
-                <p>参与政府官网、农业科院、政协、司法等多类门户界面设计，兼顾公开信息传达、视觉规范与上线可用性。</p>
-                <div class="tag-list"><span>官网设计</span><span>信息架构</span><span>政务形象</span><span>上线交付</span></div>
-                <a class="project-link" href="./project-detail.html#government-web">查看详情</a>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="硬件设计" style="--accent: #64748b">
-              <a class="project-image" href="./project-detail.html#hardware-ui" aria-label="查看智能终端与闸控触摸屏界面详情">
-                <img src="./assets/project-thumb-8.jpg" alt="智能终端与闸控触摸屏界面项目封面" loading="lazy" />
-              </a>
-              <div class="project-content">
-                <span class="project-category">硬件设计</span>
-                <h3>硬件界面交互视觉设计</h3>
-                <p>负责智能遥感终端机、闸控触摸屏等硬件界面设计，关注现场操作效率、信息层级与软硬件体验一致性。</p>
-                <div class="tag-list"><span>硬件UI</span><span>触摸屏</span><span>现场操作</span><span>一致性</span></div>
-                <a class="project-link" href="./project-detail.html#hardware-ui">查看详情</a>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="移动端" style="--accent: #8b5cf6">
+            <article class="project-card" data-category="移动端" data-href="./project-detail.html#xizang-twin-exhibition" tabindex="0" role="link" aria-label="查看西藏孪生科宣馆移动端互动系统详情" style="--accent: #8b5cf6">
               <a class="project-image" href="./project-detail.html#xizang-twin-exhibition" aria-label="查看西藏孪生科宣馆移动端互动系统详情">
                 <img src="./assets/project-thumb-9.jpg" alt="西藏孪生科宣馆移动端互动系统项目封面" loading="lazy" />
               </a>
@@ -187,7 +132,72 @@
               </div>
             </article>
 
-            <article class="project-card" data-category="AI动效/品牌物料" style="--accent: #f59e0b">
+            <article class="project-card" data-category="后台系统" data-href="./project-detail.html#basin-platform" tabindex="0" role="link" aria-label="查看B端流域综合管理平台详情" style="--accent: #2563eb">
+              <a class="project-image" href="./project-detail.html#basin-platform" aria-label="查看B端流域综合管理平台详情">
+                <img src="./assets/project-thumb-3.jpg" alt="B端流域综合管理平台项目封面" loading="lazy" />
+              </a>
+              <div class="project-content">
+                <span class="project-category">后台系统</span>
+                <h3>B端流域综合管理平台</h3>
+                <p>服务政府管理者、运维人员与巡查员，建立统一规范与模块化设计逻辑，提升页面复用和跨平台交付效率。</p>
+                <div class="tag-list"><span>B端系统</span><span>组件库</span><span>软硬一体</span><span>设计规范</span></div>
+                <a class="project-link" href="./project-detail.html#basin-platform">查看详情</a>
+              </div>
+            </article>
+
+            <article class="project-card" data-category="可视化大屏" data-href="./project-detail.html#national-park" tabindex="0" role="link" aria-label="查看国家级公园综合管理平台详情" style="--accent: #0ea5e9">
+              <a class="project-image" href="./project-detail.html#national-park" aria-label="查看国家级公园综合管理平台详情">
+                <img src="./assets/project-thumb-2.jpg" alt="国家级公园综合管理平台项目封面" loading="lazy" />
+              </a>
+              <div class="project-content">
+                <span class="project-category">可视化大屏</span>
+                <h3>国家级公园综合管理平台</h3>
+                <p>面向生态保护、灾害防控、设备运维与应急指挥，主导核心板块从 0 到 1 的信息架构、视觉风格与交互落地。</p>
+                <div class="tag-list"><span>应急指挥</span><span>设备管理</span><span>生态监测</span><span>宣传视频</span></div>
+                <a class="project-link" href="./project-detail.html#national-park">查看详情</a>
+              </div>
+            </article>
+
+            <article class="project-card" data-category="网站/门户" data-href="./project-detail.html#government-web" tabindex="0" role="link" aria-label="查看政府与行业门户网站设计详情" style="--accent: #06b6d4">
+              <a class="project-image" href="./project-detail.html#government-web" aria-label="查看政府与行业门户网站设计详情">
+                <img src="./assets/project-thumb-6.jpg" alt="政府与行业门户网站设计项目封面" loading="lazy" />
+              </a>
+              <div class="project-content">
+                <span class="project-category">网站/门户</span>
+                <h3>政府行业专题门户设计</h3>
+                <p>参与政府官网、农业科院、政协、司法等多类门户界面设计，兼顾公开信息传达、视觉规范与上线可用性。</p>
+                <div class="tag-list"><span>官网设计</span><span>信息架构</span><span>政务形象</span><span>上线交付</span></div>
+                <a class="project-link" href="./project-detail.html#government-web">查看详情</a>
+              </div>
+            </article>
+
+            <article class="project-card" data-category="可视化大屏" data-href="./project-detail.html#justice-dashboard" tabindex="0" role="link" aria-label="查看政务驾驶舱合集详情" style="--accent: #0ea5e9">
+              <a class="project-image" href="./project-detail.html#justice-dashboard" aria-label="查看政务驾驶舱合集详情">
+                <img src="./assets/project-thumb-5.jpg" alt="政务驾驶舱合集项目封面" loading="lazy" />
+              </a>
+              <div class="project-content">
+                <span class="project-category">可视化大屏</span>
+                <h3>政务驾驶舱合集</h3>
+                <p>负责多行业全流程的数据可视化大屏，项目累计50+ ，输出 700+页面。擅长信息架构、场景布局、数据图表、组件系统、动效落地。</p>
+                <div class="tag-list"><span>数据可视</span><span>短周期交付</span><span>动效落地</span><span>客户汇报</span></div>
+                <a class="project-link" href="./project-detail.html#justice-dashboard">查看详情</a>
+              </div>
+            </article>
+
+            <article class="project-card" data-category="硬件设计" data-href="./project-detail.html#hardware-ui" tabindex="0" role="link" aria-label="查看智能终端与闸控触摸屏界面详情" style="--accent: #64748b">
+              <a class="project-image" href="./project-detail.html#hardware-ui" aria-label="查看智能终端与闸控触摸屏界面详情">
+                <img src="./assets/project-thumb-8.jpg" alt="智能终端与闸控触摸屏界面项目封面" loading="lazy" />
+              </a>
+              <div class="project-content">
+                <span class="project-category">硬件设计</span>
+                <h3>硬件界面交互视觉设计</h3>
+                <p>负责智能遥感终端机、闸控触摸屏等硬件界面设计，关注现场操作效率、信息层级与软硬件体验一致性。</p>
+                <div class="tag-list"><span>硬件UI</span><span>触摸屏</span><span>现场操作</span><span>一致性</span></div>
+                <a class="project-link" href="./project-detail.html#hardware-ui">查看详情</a>
+              </div>
+            </article>
+
+            <article class="project-card" data-category="AI动效/品牌物料" data-href="./project-detail.html#ai-motion-brand" tabindex="0" role="link" aria-label="查看AI设计动效与品牌物料支持详情" style="--accent: #f59e0b">
               <a class="project-image" href="./project-detail.html#ai-motion-brand" aria-label="查看AI设计动效与品牌物料支持详情">
                 <img src="./assets/project-thumb-7.jpg" alt="AI设计动效与品牌物料项目封面" loading="lazy" />
               </a>
@@ -295,5 +305,39 @@
       </main>
     </div>
 
+    <script>
+      const filterButtons = document.querySelectorAll(".filter-button");
+      const projectCards = document.querySelectorAll(".project-card[data-category]");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+
+          filterButtons.forEach((item) => {
+            const isActive = item === button;
+            item.classList.toggle("is-active", isActive);
+            item.setAttribute("aria-pressed", String(isActive));
+          });
+
+          projectCards.forEach((card) => {
+            const shouldShow = filter === "全部" || card.dataset.category === filter;
+            card.hidden = !shouldShow;
+          });
+        });
+      });
+
+      document.querySelectorAll(".project-card[data-href]").forEach((card) => {
+        card.addEventListener("click", (event) => {
+          if (event.target.closest("a")) return;
+          window.location.href = card.dataset.href;
+        });
+
+        card.addEventListener("keydown", (event) => {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          event.preventDefault();
+          window.location.href = card.dataset.href;
+        });
+      });
+    </script>
   </body>
 </html>
